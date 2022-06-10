@@ -1,0 +1,23 @@
+class Solution {
+
+public:
+int lengthOfLongestSubstring(string s) {
+    int p1 = 0, p2 = 0, maxlength = 0;    
+    while (p2 < s.size()) {
+        p2++;
+        int index=isitthere(s, p1, p2-1, s[p2]);
+        if(p2==(s.size()) || (index>-1)) {
+            maxlength = max(maxlength, p2-p1);
+            p1=index+1; 
+        }
+    }
+    return maxlength;  
+    }
+    
+    int isitthere(string& st, int s, int e, char& c){
+    for(int i = s; i <= e; i++)
+        if(st[i]==c)
+            return i;
+    return -1;
+    }    
+};
