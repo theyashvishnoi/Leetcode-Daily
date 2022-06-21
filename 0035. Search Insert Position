@@ -1,0 +1,49 @@
+// brute force approach
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = nums.size();
+        int ans;
+        for(int i = 0; i<n;i++){
+            if(nums[i]==target){
+                ans = i;
+            }
+            else if(nums[i]!= target){
+                sort(nums.begin(), nums.end());
+                while(nums[i]<target){
+                    ans = nums[i+1];
+                }
+                
+            }
+        }
+        return ans;
+    }
+    
+};
+
+
+
+
+// optimised approach 
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) 
+    {
+        int start=0, end=nums.size()-1;
+        int mid;
+        
+        while(start<=end)
+        {
+            mid=start+(end-start)/2;
+            
+            if(nums[mid]<target)
+                start = mid+1;
+            
+            else
+                end = mid-1;
+            
+        }
+        return start;
+        
+    }
+};
