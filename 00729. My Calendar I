@@ -1,0 +1,43 @@
+**C++ Easy Solution using Map | explained using comments**
+*Runtime: 512 ms, faster than 7.13% of C++ online submissions for My Calendar I.
+Memory Usage: 43.9 MB, less than 8.21% of C++ online submissions for My Calendar I.*
+**please UPVOTE if you like the solution/ approach**
+```
+class MyCalendar {
+    // create a map (ordered map) to store all the elements in sorted order
+    private: map <int,int> mp;
+public:
+    MyCalendar() {
+        
+    }
+    
+    bool book(int start, int end) {
+        //initialize key of every element with 1
+        mp[start]++;
+        // initialize value of every element in map with -1
+        mp[end]--;
+        //initialy, take sum equals to one
+        int sum = 0;
+        //iterate over the map
+        for(auto i = mp.begin(); i!=mp.end();i++){
+            //increase the sum by adding the value to key  
+            sum += i->second;
+            //check if  the sum going beyond 0 & 1, if sum crosses the boundary of 0 and 1', return zero for that particular iteration of the map.
+            if(sum>1){
+                mp[start]--;
+                mp[end]++;
+                return false;
+            }
+        }
+        //return true if false condition is not excuted for that iteration
+        return true;
+    }
+};
+
+/**
+ * Your MyCalendar object will be instantiated and called as such:
+ * MyCalendar* obj = new MyCalendar();
+ * bool param_1 = obj->book(start,end);
+ */
+```
+**please UPVOTE if you like the solution/ approach**
